@@ -12,14 +12,16 @@ const getServerUrl = () => {
   // Use environment variable if set, otherwise use default logic
   const SERVER_URL = process.env.SERVER_URL;
   if (SERVER_URL) {
+    console.log('Using SERVER_URL from environment:', SERVER_URL);
     return SERVER_URL;
   }
   
   if (Platform.OS === 'android') {
     if (__DEV__) {
-      // For Android emulator in development, use the machine's IP address
-      // Make sure to replace this with your actual development machine's IP address
-      return 'http://10.0.2.2:3001/process-receipt'; // Android emulator localhost
+      // For Android emulator in development, use the machine's actual IP address
+      // Replace this with your actual development machine's IP address
+      console.log('Using Android emulator with actual IP address');
+      return 'http://192.168.0.110:3001/process-receipt'; // Use your actual IP address
     } else {
       // For production APK, you need to use a publicly accessible server
       // IMPORTANT: Replace with your actual server URL when deployed
@@ -31,6 +33,7 @@ const getServerUrl = () => {
   } else if (Platform.OS === 'web') {
     // For web, use localhost in development, production URL when deployed
     if (__DEV__) {
+      console.log('Using web localhost');
       return 'http://localhost:3001/process-receipt';
     } else {
       // Replace with your actual server URL when deployed
@@ -41,6 +44,7 @@ const getServerUrl = () => {
     // For iOS
     if (__DEV__) {
       // For iOS simulator, use localhost
+      console.log('Using iOS simulator localhost');
       return 'http://localhost:3001/process-receipt';
     } else {
       // For production iOS, you need to use a publicly accessible server
@@ -99,10 +103,11 @@ export const processReceiptImage = async (imageUri) => {
     console.log('Processing image URI:', imageUri);
     console.log('Platform:', Platform.OS);
     console.log('Development mode:', __DEV__);
-    console.log('Server URL:', getServerUrl());
     
     // Check if we're in production and using the placeholder URL
     const serverUrl = getServerUrl();
+    console.log('Server URL:', serverUrl);
+    
     if (serverUrl.includes('your-server-domain.com')) {
       throw new Error('Server URL not configured for production. Please update python_bridge.js with your actual server URL.');
     }
@@ -114,6 +119,14 @@ export const processReceiptImage = async (imageUri) => {
     console.log('File name:', fileName);
     console.log('MIME type:', mimeType);
     
+    // Check if file exists
+    const fileInfo = await FileSystem.getInfoAsync(imageUri);
+    console.log('File info:', fileInfo);
+    
+    if (!fileInfo.exists) {
+      throw new Error('Image file does not exist');
+    }
+    
     const formData = new FormData();
     formData.append('image', {
       uri: imageUri,
@@ -123,14 +136,21 @@ export const processReceiptImage = async (imageUri) => {
 
     console.log('Sending request to:', serverUrl);
     
+    // Add timeout and better error handling
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+    
     const response = await fetch(serverUrl, {
       method: 'POST',
       body: formData,
       headers: {
         // Don't set Content-Type for FormData, let the browser set it automatically
       },
+      signal: controller.signal
     });
-
+    
+    clearTimeout(timeoutId);
+    
     console.log('Response status:', response.status);
     
     if (!response.ok) {
@@ -144,7 +164,15 @@ export const processReceiptImage = async (imageUri) => {
     return result;
   } catch (error) {
     console.error('Error processing receipt:', error);
-    throw new Error(`Failed to process receipt image: ${error.message}`);
+    
+    // More specific error handling
+    if (error.name === 'AbortError') {
+      throw new Error('Request timeout: Server did not respond in time');
+    } else if (error.message.includes('Network request failed')) {
+      throw new Error('Network error: Could not connect to server. Please check if the server is running and accessible.');
+    } else {
+      throw new Error(`Failed to process receipt image: ${error.message}`);
+    }
   }
 };
 
@@ -155,6 +183,8 @@ export const generateReceiptImage = async (acceptedItems) => {
     
     // Check if we're in production and using the placeholder URL
     const serverUrl = getServerUrl().replace('/process-receipt', '/generate-receipt');
+    console.log('Generate receipt URL:', serverUrl);
+    
     if (serverUrl.includes('your-server-domain.com')) {
       throw new Error('Server URL not configured for production. Please update python_bridge.js with your actual server URL.');
     }
@@ -174,14 +204,21 @@ export const generateReceiptImage = async (acceptedItems) => {
 
     console.log('Sending request to:', serverUrl);
     
+    // Add timeout and better error handling
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+    
     const response = await fetch(serverUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(receiptData),
+      signal: controller.signal
     });
-
+    
+    clearTimeout(timeoutId);
+    
     console.log('Response status:', response.status);
     
     if (!response.ok) {
@@ -195,19 +232,14 @@ export const generateReceiptImage = async (acceptedItems) => {
     return result;
   } catch (error) {
     console.error('Error generating receipt:', error);
-    throw new Error(`Failed to generate receipt: ${error.message}`);
+    
+    // More specific error handling
+    if (error.name === 'AbortError') {
+      throw new Error('Request timeout: Server did not respond in time');
+    } else if (error.message.includes('Network request failed')) {
+      throw new Error('Network error: Could not connect to server. Please check if the server is running and accessible.');
+    } else {
+      throw new Error(`Failed to generate receipt: ${error.message}`);
+    }
   }
-};
-
-// Function to call the actual Python script (for future implementation)
-export const callPythonScript = async (imagePath) => {
-  // This would be implemented using:
-  // - A local server running the Python script
-  // - React Native bridge to Python
-  // - Cloud function that processes the image
-  
-  const command = `python receipt_scanner.py "${imagePath}"`;
-  // Execute command and parse JSON response
-  
-  return null; // Placeholder
 };

@@ -1,0 +1,39 @@
+{
+  "shop_name": "SUE CT TUTE TUE EU EEE.",
+  "shop_address": [
+    "CASH RECEIPT",
+    "Shop Nama.",
+    "Date:"
+  ],
+  "items": [
+    {
+      "item": "Lorem",
+      "quantity": 1,
+      "cost": 126,
+      "currency": "USD"
+    },
+    {
+      "item": "tpsum",
+      "quantity": 1,
+      "cost": 3.7,
+      "currency": "USD"
+    },
+    {
+      "item": "Dolor",
+      "quantity": 1,
+      "cost": 70.5,
+      "currency": "USD"
+    }
+  ],
+  "total": {
+    "subtotal": null,
+    "tax": 3.65,
+    "service_charge": null,
+    "total": 77.8,
+    "currency": "USD"
+  },
+  "footer": [
+    "THANK YOU!",
+    "SARAALABLARRASRRER SORA DDS"
+  ]
+}

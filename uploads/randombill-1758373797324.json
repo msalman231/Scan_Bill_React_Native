@@ -1,0 +1,65 @@
+{
+  "shop_name": "‘ RECEIPT",
+  "shop_address": [],
+  "items": [
+    {
+      "item": "ixChicken Soup.",
+      "quantity": 1,
+      "cost": 45,
+      "currency": "USD"
+    },
+    {
+      "item": "Tomato Soup",
+      "quantity": 2,
+      "cost": 45,
+      "currency": "USD"
+    },
+    {
+      "item": "Crispy Chicken",
+      "quantity": 1,
+      "cost": 30,
+      "currency": "USD"
+    },
+    {
+      "item": "Mineral Water",
+      "quantity": 1,
+      "cost": 1,
+      "currency": "USD"
+    },
+    {
+      "item": "keTea",
+      "quantity": 2,
+      "cost": 3,
+      "currency": "USD"
+    },
+    {
+      "item": "ixLemon Juice",
+      "quantity": 1,
+      "cost": 7,
+      "currency": "USD"
+    },
+    {
+      "item": "Mango Juice",
+      "quantity": 1,
+      "cost": 7,
+      "currency": "USD"
+    },
+    {
+      "item": "eraLamounr",
+      "quantity": 1,
+      "cost": 108,
+      "currency": "USD"
+    }
+  ],
+  "total": {
+    "subtotal": null,
+    "tax": null,
+    "service_charge": null,
+    "total": null,
+    "currency": "USD"
+  },
+  "footer": [
+    "THANK YOU",
+    "TVNEQUCDUE CONDE"
+  ]
+}

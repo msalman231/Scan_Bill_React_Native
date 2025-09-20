@@ -62,6 +62,23 @@ app.use((req, res, next) => {
   }
 });
 
+// Add a root endpoint for health check
+app.get('/', (req, res) => {
+  res.json({ 
+    status: 'Server is running', 
+    timestamp: new Date().toISOString(),
+    endpoints: {
+      processReceipt: 'POST /process-receipt',
+      generateReceipt: 'POST /generate-receipt'
+    }
+  });
+});
+
+// Add a health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
 app.post('/process-receipt', upload.single('image'), (req, res) => {
   console.log('Received request to process receipt');
   console.log('File info:', req.file);
@@ -240,7 +257,8 @@ if (!fs.existsSync('uploads')) {
 
 // Use PORT environment variable or default to 3001
 const PORT = process.env.PORT || 3001;
-const HOST = process.env.HOST || '0.0.0.0';
+// Bind to all interfaces to allow external connections
+const HOST = '0.0.0.0';
 
 app.listen(PORT, HOST, () => {
   console.log(`Server running on http://${HOST}:${PORT}`);

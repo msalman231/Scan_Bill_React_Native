@@ -5,19 +5,19 @@
     {
       "item": "Cucurber O",
       "quantity": 1,
-      "cost": 35.0,
+      "cost": 35,
       "currency": "USD"
     },
     {
       "item": "tee",
       "quantity": 1,
-      "cost": 1410.0,
+      "cost": 1410,
       "currency": "USD"
     },
     {
       "item": "Leaon",
       "quantity": 1,
-      "cost": 2025.0,
+      "cost": 2025,
       "currency": "USD"
     },
     {
@@ -41,19 +41,19 @@
     {
       "item": "beet",
       "quantity": 1,
-      "cost": 3450.0,
+      "cost": 3450,
       "currency": "USD"
     },
     {
       "item": "Onion",
       "quantity": 1,
-      "cost": 410.0,
+      "cost": 410,
       "currency": "USD"
     },
     {
       "item": "Cheese",
       "quantity": 1,
-      "cost": 95.0,
+      "cost": 95,
       "currency": "USD"
     },
     {
@@ -71,7 +71,7 @@
   ],
   "total": {
     "subtotal": null,
-    "tax": 1450.0,
+    "tax": 1450,
     "service_charge": null,
     "total": 13.25,
     "currency": "USD"

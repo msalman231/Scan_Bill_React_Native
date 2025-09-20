@@ -1,0 +1,52 @@
+{
+  "shop_name": "Ae ey: Fn Ey Sw",
+  "shop_address": [
+    "RECEIPT"
+  ],
+  "items": [
+    {
+      "item": "Lorem ipsum",
+      "quantity": 1,
+      "cost": 25,
+      "currency": "USD"
+    },
+    {
+      "item": "Dolor sit",
+      "quantity": 1,
+      "cost": 1500,
+      "currency": "USD"
+    },
+    {
+      "item": "Ovis aute",
+      "quantity": 1,
+      "cost": 4500,
+      "currency": "USD"
+    },
+    {
+      "item": "Excepteut sint",
+      "quantity": 1,
+      "cost": 10,
+      "currency": "USD"
+    },
+    {
+      "item": "Magna aliqua",
+      "quantity": 1,
+      "cost": 1700,
+      "currency": "USD"
+    },
+    {
+      "item": "cillam dolore",
+      "quantity": 1,
+      "cost": 6300,
+      "currency": "USD"
+    }
+  ],
+  "total": {
+    "subtotal": null,
+    "tax": null,
+    "service_charge": null,
+    "total": null,
+    "currency": "USD"
+  },
+  "footer": []
+}

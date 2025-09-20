@@ -1,0 +1,62 @@
+{
+  "shop_name": "eeee—e—ee—e—e—e——e—e—e——e———————",
+  "shop_address": [],
+  "items": [
+    {
+      "item": "Loren",
+      "quantity": 1,
+      "cost": 6.5,
+      "currency": "USD"
+    },
+    {
+      "item": "{> Ipsum",
+      "quantity": 1,
+      "cost": 7.5,
+      "currency": "USD"
+    },
+    {
+      "item": "; Dolor Sit",
+      "quantity": 1,
+      "cost": 48,
+      "currency": "USD"
+    },
+    {
+      "item": "Amct",
+      "quantity": 1,
+      "cost": 9.3,
+      "currency": "USD"
+    },
+    {
+      "item": "GConsectetur",
+      "quantity": 1,
+      "cost": 11.9,
+      "currency": "USD"
+    },
+    {
+      "item": "‘ Adipiscing Elit",
+      "quantity": 1,
+      "cost": 1.2,
+      "currency": "USD"
+    },
+    {
+      "item": "Sed Do",
+      "quantity": 1,
+      "cost": 0.4,
+      "currency": "USD"
+    },
+    {
+      "item": "AMOUNT",
+      "quantity": 1,
+      "cost": 84.8,
+      "currency": "USD"
+    }
+  ],
+  "total": {
+    "subtotal": null,
+    "tax": 8,
+    "service_charge": null,
+    "total": 76.8,
+    "currency": "USD"
+  },
+  "footer": []
+}
