@@ -16,7 +16,6 @@
     "expo-file-system": "~17.0.0",
     "expo-image-picker": "~15.0.0",
     "expo-status-bar": "~1.12.1",
-    "iconv-lite": "^0.6.3",
     "multer": "^1.4.5-lts.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -28,7 +27,6 @@
   "devDependencies": {
     "@react-native-community/cli": "^13.6.6",
     "@react-native/metro-config": "^0.74.5",
-    "body-parser": "^1.20.2",
     "express": "^4.18.2"
   }
 }

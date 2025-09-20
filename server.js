@@ -238,7 +238,10 @@ if (!fs.existsSync('uploads')) {
   fs.mkdirSync('uploads');
 }
 
-const PORT = 3001;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
+// Use PORT environment variable or default to 3001
+const PORT = process.env.PORT || 3001;
+const HOST = process.env.HOST || '0.0.0.0';
+
+app.listen(PORT, HOST, () => {
+  console.log(`Server running on http://${HOST}:${PORT}`);
 });

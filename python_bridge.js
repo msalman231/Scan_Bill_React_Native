@@ -9,6 +9,12 @@ const getServerUrl = () => {
   // Check if we're in development mode
   const isDevelopment = process.env.NODE_ENV === 'development';
   
+  // Use environment variable if set, otherwise use default logic
+  const SERVER_URL = process.env.SERVER_URL;
+  if (SERVER_URL) {
+    return SERVER_URL;
+  }
+  
   if (Platform.OS === 'android') {
     if (__DEV__) {
       // For Android emulator in development, use the machine's IP address
@@ -19,7 +25,7 @@ const getServerUrl = () => {
       // IMPORTANT: Replace with your actual server URL when deployed
       // For local testing, you can use your computer's IP address on the same network
       // Example: 'http://192.168.1.100:3001/process-receipt'
-      console.error('ERROR: Server URL not configured for production APK. Please update python_bridge.js with your server URL.');
+      console.error('ERROR: Server URL not configured for production APK. Please set SERVER_URL environment variable or update python_bridge.js with your server URL.');
       return 'http://your-server-domain.com:3001/process-receipt';
     }
   } else if (Platform.OS === 'web') {
@@ -28,7 +34,7 @@ const getServerUrl = () => {
       return 'http://localhost:3001/process-receipt';
     } else {
       // Replace with your actual server URL when deployed
-      console.error('ERROR: Server URL not configured for web production. Please update python_bridge.js with your server URL.');
+      console.error('ERROR: Server URL not configured for web production. Please set SERVER_URL environment variable or update python_bridge.js with your server URL.');
       return 'http://your-server-domain.com:3001/process-receipt';
     }
   } else {
@@ -41,7 +47,7 @@ const getServerUrl = () => {
       // IMPORTANT: Replace with your actual server URL when deployed
       // For local testing, you can use your computer's IP address on the same network
       // Example: 'http://192.168.1.100:3001/process-receipt'
-      console.error('ERROR: Server URL not configured for iOS production. Please update python_bridge.js with your server URL.');
+      console.error('ERROR: Server URL not configured for iOS production. Please set SERVER_URL environment variable or update python_bridge.js with your server URL.');
       return 'http://your-server-domain.com:3001/process-receipt';
     }
   }
