@@ -1,0 +1,53 @@
+{
+  "shop_name": "SHOP RECEIPT",
+  "shop_address": [],
+  "items": [
+    {
+      "item": "Lorem wheat",
+      "quantity": 1,
+      "cost": 1.5,
+      "currency": "EUR"
+    },
+    {
+      "item": "Ipsum apple",
+      "quantity": 1,
+      "cost": 3.75,
+      "currency": "EUR"
+    },
+    {
+      "item": "Oolor banana",
+      "quantity": 1,
+      "cost": 7.3,
+      "currency": "EUR"
+    },
+    {
+      "item": "Sit meat",
+      "quantity": 1,
+      "cost": 9.5,
+      "currency": "EUR"
+    },
+    {
+      "item": "Amet candy",
+      "quantity": 1,
+      "cost": 0.8,
+      "currency": "EUR"
+    },
+    {
+      "item": "Consecteur coffe",
+      "quantity": 1,
+      "cost": 1.2,
+      "currency": "EUR"
+    }
+  ],
+  "total": {
+    "subtotal": 20.45,
+    "tax": 155,
+    "service_charge": null,
+    "total": 24.05,
+    "currency": "EUR"
+  },
+  "footer": [
+    "THANK YOU",
+    "HAVE A WICE DAY"
+  ]
+}
